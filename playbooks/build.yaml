@@ -1,0 +1,16 @@
+---
+name: Build Docker Image
+
+hosts: dockerservers
+gather_facts: false
+remote_user: root
+
+tasks:
+  - name: Building Docker Image
+    docker_image:
+      name: 66026123:latest  # Docker image name
+      source: build
+      build:
+        path: ~/66026123  # Path where source code files are stored
+      state: present
+      force_source: true
