@@ -1,0 +1,16 @@
+---
+name: Deploy Docker Container
+
+hosts: dockerservers
+gather_facts: false
+remote_user: root
+
+tasks:
+  - name: Creating the Container
+    docker_container:
+      name: 66026123-container  # Docker container name
+      image: 66026123:latest  # Docker image name
+      ports:
+        - "80:80"  # First port is exposed to browser, second is Docker's internal port (80 for web servers, 3000 for Next.js)
+      state: started
+      restart_policy: always  # Ensures the container restarts if it stops
