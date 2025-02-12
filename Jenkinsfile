@@ -5,7 +5,7 @@ pipeline {
         stage("Copy file to Docker server") {
             steps {
                 // Edit team33-neogym to be the same name as the pipeline job/item created in Jenkins.
-                sh "scp -P 15000 -r /var/lib/jenkins/workspace/66026123/ root@43.208.146.8:~/66026123"
+                sh "scp -r /var/lib/jenkins/workspace/66026123/* root@43.208.146.8:~/66026123"
             }
         }
 
